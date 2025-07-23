@@ -118,3 +118,69 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* Forçando tema preto e branco sofisticado */
+.bg-orange-500, .bg-orange-600, .bg-orange-700 {
+  background-color: oklch(0.12 0 0) !important;
+}
+
+.bg-green-500, .bg-green-600, .bg-green-700 {
+  background-color: oklch(0.88 0 0) !important;
+  color: oklch(0.12 0 0) !important;
+}
+
+.bg-blue-500, .bg-blue-600, .bg-blue-700 {
+  background-color: oklch(0.25 0 0) !important;
+}
+
+.text-orange-500, .text-orange-600, .text-orange-700 {
+  color: oklch(0.12 0 0) !important;
+}
+
+.text-green-500, .text-green-600, .text-green-700 {
+  color: oklch(0.45 0 0) !important;
+}
+
+.text-blue-500, .text-blue-600, .text-blue-700 {
+  color: oklch(0.35 0 0) !important;
+}
+
+.border-orange-500, .border-orange-600, .border-orange-700 {
+  border-color: oklch(0.88 0 0) !important;
+}
+
+.border-green-500, .border-green-600, .border-green-700 {
+  border-color: oklch(0.88 0 0) !important;
+}
+
+.border-blue-500, .border-blue-600, .border-blue-700 {
+  border-color: oklch(0.88 0 0) !important;
+}
+
+/* Sobrescrevendo cores específicas do tema */
+button {
+  background-color: oklch(0.12 0 0) !important;
+  color: oklch(0.99 0 0) !important;
+}
+
+button:hover {
+  background-color: oklch(0.25 0 0) !important;
+}
+
+.bg-primary {
+  background-color: oklch(0.12 0 0) !important;
+}
+
+.bg-secondary {
+  background-color: oklch(0.88 0 0) !important;
+}
+
+.text-primary {
+  color: oklch(0.12 0 0) !important;
+}
+
+.text-secondary {
+  color: oklch(0.45 0 0) !important;
+}
+
