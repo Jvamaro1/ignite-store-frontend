@@ -1,13 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Star, Shield, Zap, Award, CheckCircle, Package, Heart } from 'lucide-react'
 import { CartContext } from '../App'
-import { getFeaturedProducts } from '../data/products'
+import { getFeaturedProducts, products } from '../data/products'
 import ProductCard from './ProductCard'
 
 const Home = () => {
   const { addToCart } = useContext(CartContext)
-  const featuredProducts = getFeaturedProducts()
+  const [featuredProducts, setFeaturedProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const apiProducts = await getFeaturedProducts()
+        if (apiProducts && apiProducts.length > 0) {
+          setFeaturedProducts(apiProducts)
+        } else {
+          // Fallback to static data
+          setFeaturedProducts(products.filter(product => [3, 5, 6].includes(product.id)))
+        }
+      } catch (error) {
+        console.error('Error loading products:', error)
+        // Fallback to static data
+        setFeaturedProducts(products.filter(product => [3, 5, 6].includes(product.id)))
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadProducts()
+  }, [])
 
   const handleAddToCart = (product) => {
     addToCart({
@@ -138,13 +161,28 @@ const Home = () => {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {featuredProducts.map(product => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-              />
-            ))}
+            {loading ? (
+              // Loading skeleton
+              Array.from({ length: 3 }, (_, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                  <div className="aspect-square bg-gray-200"></div>
+                  <div className="p-4">
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-6 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-8 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              featuredProducts.map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={handleAddToCart}
+                />
+              ))
+            )}
           </div>
           
           <div className="text-center mt-12">
