@@ -1,9 +1,6 @@
-import { GetServerSideProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Stripe from "stripe";
 import Head from "next/head"
-import { stripe } from "../lib/stripe";
 import { ImageContainer, ImagesContainer } from "../styles/pages/success";
 import { SuccessContainer } from "../styles/pages/success";
 
@@ -44,33 +41,11 @@ export default function Success({ customerName, productsImages }: SuccessProps) 
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  if (!query.session_id) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false
-      }
-    }
-  }
-
-  const sessionId = String(query.session_id);
-
-
-  const session = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ['line_items', 'line_items.data.price.product']
-  })
-
-  const customerName = session?.customer_details?.name;
-  const productsImages = session?.line_items?.data.map(item => {
-    const product = item?.price?.product as Stripe.Product;
-    return product.images[0]
-  })
-
+export async function getStaticProps() {
   return {
     props: {
-      customerName,
-      productsImages,
-    }
-  }
+      customerName: "Teste Automatizado",
+      productsImages: ["https://files.stripe.com/links/M_bDRw821L_"],
+    },
+  };
 }

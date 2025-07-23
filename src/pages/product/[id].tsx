@@ -69,25 +69,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ params }) => {
   const productId = params?.id;
 
-  const product = await stripe.products.retrieve(productId!, {
-    expand: ['default_price']
-  });
+  // const product = await stripe.products.retrieve(productId!, {
+  //   expand: [\"default_price\"]
+  // });
 
-  const price = product.default_price as Stripe.Price;
+  // const price = product.default_price as Stripe.Price;
 
   return {
     props: {
       product: {
-        id: product.id,
-        name: product.name,
-        imageUrl: product.images[0],
-        price: new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL"
-        }).format(price.unit_amount ? price.unit_amount / 100 : 0),
-        numberPrice: price.unit_amount ? price.unit_amount / 100 : 0,
-        description: product.description,
-        defaultPriceId: price.id
+        id: productId,
+        name: "Produto de Teste",
+        imageUrl: "",
+        price: "R$ 0,00",
+        numberPrice: 0,
+        description: "Descrição do produto de teste.",
+        defaultPriceId: ""
       }
     },
     revalidate: 60 * 60 * 1 // 1 hours

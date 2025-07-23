@@ -13,3 +13,11 @@ export const HeaderContainer = styled("header", {
     marginLeft: "auto"
   }
 })
+
+
+export const HeaderActions = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "1rem",
+});
+
