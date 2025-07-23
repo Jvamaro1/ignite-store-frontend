@@ -25,7 +25,7 @@ const Home = () => {
       <section className="bg-gradient-to-r from-black via-gray-900 to-black text-white py-20 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            A Experiência Definitiva em <span className="text-orange-400">Pods Ignite</span>
+            A Experiência Definitiva em <span className="text-orange-400">Amaro Eletronicos</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Descubra a linha premium de pods descartáveis que redefine a vaporização 
@@ -43,7 +43,7 @@ const Home = () => {
               to="/sobre"
               className="border border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-lg font-semibold transition-colors duration-200 text-center"
             >
-              Conheça a Ignite
+              Conheça a Amaro Eletronicos
             </Link>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Home = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Por que a Ignite é a sua Melhor Escolha?
+              Por que a Amaro Eletronicos é a sua Melhor Escolha?
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Comprometidos com a excelência, oferecemos mais do que apenas pods; entregamos uma experiência.
@@ -133,7 +133,7 @@ const Home = () => {
               Nossos Produtos Mais Populares
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Descubra os pods Ignite que estão conquistando o mercado. Qualidade e sabor em cada puff.
+              Descubra os produtos Amaro Eletronicos que estão conquistando o mercado. Qualidade e sabor em cada puff.
             </p>
           </div>
           
@@ -166,7 +166,7 @@ const Home = () => {
             Pronto para Elevar sua Experiência?
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Junte-se a milhares de clientes satisfeitos e descubra o mundo de sabor e qualidade que só a Ignite oferece.
+            Junte-se a milhares de clientes satisfeitos e descubra o mundo de sabor e qualidade que só a Amaro Eletronicos oferece.
           </p>
           <Link 
             to="/produtos"

@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
             <div className="text-2xl font-bold mb-4">
-              <span className="text-white">IGNITE</span>
+              <span className="text-white">Amaro Eletronicos</span>
             </div>
             <p className="text-gray-300 mb-4">
               A marca premium de pods descartáveis que oferece a melhor experiência 
@@ -87,7 +87,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-300">
-            © 2025 Ignite Store. Todos os direitos reservados.
+            © 2025 Amaro Eletronicos. Todos os direitos reservados.
           </p>
           <p className="text-gray-400 text-sm mt-2">
             Este produto contém nicotina. A nicotina é um químico viciante. Proibida a venda para menores de 18 anos.
