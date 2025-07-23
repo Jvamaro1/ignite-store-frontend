@@ -1,67 +1,4 @@
-// Product data for Ignite pods - Now fetched from API
-const API_BASE_URL = '/api'
-
-export const fetchProducts = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/products`)
-    if (!response.ok) {
-      throw new Error('Failed to fetch products')
-    }
-    const products = await response.json()
-    
-    // Transform API data to match frontend expectations
-    return products.map(product => ({
-      ...product,
-      originalPrice: product.original_price,
-      inStock: product.in_stock,
-      image: `${API_BASE_URL}/images/${product.image}`,
-      installments: `2x de R$ ${(product.price / 2).toFixed(2)}`,
-      cashDiscount: `R$ ${(product.price * 0.9).toFixed(2)} à vista (com 10% OFF)`,
-      features: product.characteristics,
-      badge: "Oferta!"
-    }))
-  } catch (error) {
-    console.error('Error fetching products:', error)
-    return []
-  }
-}
-
-export const getProductById = async (id) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/products/${id}`)
-    if (!response.ok) {
-      throw new Error('Failed to fetch product')
-    }
-    const product = await response.json()
-    
-    // Transform API data to match frontend expectations
-    return {
-      ...product,
-      originalPrice: product.original_price,
-      inStock: product.in_stock,
-      image: `${API_BASE_URL}/images/${product.image}`,
-      installments: `2x de R$ ${(product.price / 2).toFixed(2)}`,
-      cashDiscount: `R$ ${(product.price * 0.9).toFixed(2)} à vista (com 10% OFF)`,
-      features: product.characteristics,
-      badge: "Oferta!"
-    }
-  } catch (error) {
-    console.error('Error fetching product:', error)
-    return null
-  }
-}
-
-export const getProductsByModel = async (model) => {
-  const products = await fetchProducts()
-  return products.filter(product => product.model === model)
-}
-
-export const getFeaturedProducts = async () => {
-  const products = await fetchProducts()
-  return products.filter(product => [3, 5, 6].includes(product.id)) // V50, V80, V150
-}
-
-// Fallback static data for development
+// Product data for Ignite pods - Static data for Vercel
 export const products = [
   {
     id: 1,
@@ -72,7 +9,7 @@ export const products = [
     originalPrice: 54.90,
     installments: "2x de R$ 22,95",
     cashDiscount: "R$ 41,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v15.png",
+    image: "/images/ignite-v15.png",
     description: "Pod descartável com 1500 puffs, ideal para quem busca praticidade e qualidade.",
     features: [
       "1500 puffs",
@@ -101,7 +38,7 @@ export const products = [
     originalPrice: 79.90,
     installments: "2x de R$ 32,95",
     cashDiscount: "R$ 59,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v35.png",
+    image: "/images/ignite-v35.png",
     description: "Pod descartável com 3500 puffs, perfeito para uso prolongado.",
     features: [
       "3500 puffs",
@@ -130,7 +67,7 @@ export const products = [
     originalPrice: 99.90,
     installments: "2x de R$ 42,95",
     cashDiscount: "R$ 77,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v50.png",
+    image: "/images/ignite-v50.png",
     description: "Pod descartável premium com 5000 puffs e tecnologia avançada.",
     features: [
       "5000 puffs",
@@ -159,7 +96,7 @@ export const products = [
     originalPrice: 109.90,
     installments: "2x de R$ 47,95",
     cashDiscount: "R$ 86,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v60.png",
+    image: "/images/ignite-v60.png",
     description: "Pod descartável com 6000 puffs, oferecendo experiência superior.",
     features: [
       "6000 puffs",
@@ -188,7 +125,7 @@ export const products = [
     originalPrice: 129.90,
     installments: "2x de R$ 57,95",
     cashDiscount: "R$ 104,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v80.png",
+    image: "/images/ignite-v80.png",
     description: "Pod descartável de alta performance com 8000 puffs.",
     features: [
       "8000 puffs",
@@ -217,7 +154,7 @@ export const products = [
     originalPrice: 189.90,
     installments: "2x de R$ 82,95",
     cashDiscount: "R$ 149,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v150.png",
+    image: "/images/ignite-v150.png",
     description: "O mais avançado pod descartável com 15000 puffs.",
     features: [
       "15000 puffs",
@@ -246,7 +183,7 @@ export const products = [
     originalPrice: 209.90,
     installments: "2x de R$ 92,95",
     cashDiscount: "R$ 167,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v150-pro.png",
+    image: "/images/ignite-v150-pro.png",
     description: "A versão premium do V150 com recursos exclusivos.",
     features: [
       "15000 puffs",
@@ -275,7 +212,7 @@ export const products = [
     originalPrice: 259.90,
     installments: "2x de R$ 112,95",
     cashDiscount: "R$ 203,31 à vista (com 10% OFF)",
-    image: "/api/images/ignite-v250.png",
+    image: "/images/ignite-v250.png",
     description: "O pod mais duradouro da linha Ignite com 25000 puffs.",
     features: [
       "25000 puffs",
@@ -296,4 +233,16 @@ export const products = [
     reviews: 67
   }
 ]
+
+export const getProductById = (id) => {
+  return products.find(product => product.id === parseInt(id))
+}
+
+export const getProductsByModel = (model) => {
+  return products.filter(product => product.model === model)
+}
+
+export const getFeaturedProducts = () => {
+  return products.filter(product => [3, 5, 6].includes(product.id)) // V50, V80, V150
+}
 
