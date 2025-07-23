@@ -38,9 +38,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg font-bold text-xl">
-              Amaro Eletronicos
-            </div>
+            <img 
+              src="/amaro_eletronicos_logo.png" 
+              alt="Amaro Eletronicos" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Search Bar */}
