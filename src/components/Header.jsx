@@ -60,7 +60,7 @@ const Header = () => {
           {/* Right Side */}
           <div className="flex items-center space-x-6">
             <Link 
-              to="#" 
+              to="/auth" 
               className="hidden md:block text-gray-700 hover:text-orange-500 transition-colors text-sm"
             >
               Entre ou cadastre-se

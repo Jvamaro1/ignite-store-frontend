@@ -10,6 +10,7 @@ import Products from './components/Products'
 import ProductDetail from './components/ProductDetail'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
+import Auth from './components/Auth'
 
 // Context for cart management
 export const CartContext = React.createContext()
@@ -68,6 +69,7 @@ function App() {
               <Route path="/produto/:id" element={<ProductDetail />} />
               <Route path="/carrinho" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/auth" element={<Auth />} />
             </Routes>
           </main>
           <Footer />
